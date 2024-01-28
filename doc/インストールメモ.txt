@@ -1,0 +1,74 @@
+■インストールメモ
+==================
+* 2024.01.28: 新規作成
+
+Ubuntu に CppUTest をインストールした時のメモ。
+
+## 参考になったURL
+* Qitta内: Cpputestの導入
+    * https://qiita.com/kjmatu/items/72021199ddaf59e6843f
+
+## 手順
+* 以下のライブラリが必要なので入れておく。
+sudo apt-get install automake autoconf libtool
+
+* パッケージは以下から手に入れられる。
+git clone https://github.com/cpputest/cpputest.git
+
+* 以下の手順で make する。
+cd cpputest
+autoreconf . -i
+./configure 
+make tdd
+
+* なぜかプロジェクトを作るスクリプトだけ実行属性が落ちているので入れておく。
+chmod +x scripts/NewProject.sh 
+
+* これで環境はできた。あとは　~/.bashrc に以下の行を追加。
+export CPPUTEST_HOME=《cpputestをクローンしたディレクトリ名》
+export PATH=$PATH:${CPPUTEST_HOME}/scripts
+
+## テストプロジェクト作成手順
+* 以下のスクリプトで作ってくれる。
+NewProject.sh <プロジェクト名>
+
+* 試しに make してみる。
+make
+    * make clean は使える。
+    * make debug とすると参照するヘッダとか表示してくれる。
+    * make start だとテストせずにビルドだけするみたい。
+
+* 後は、各用途に応じたファイルをそれぞれのディレクトリに入れる。
+    * テストドライバはtestsへ(*.cpp)
+    * 試験対象のヘッダファイルはinclude下に適当なディレクトリを作ってそこへ(*.h)。
+    * 試験対象のソースはsrc下へ(*.c)
+        <pre>
+        以下は NewProject.sh Sample した後の作成例。
+        Sample
+        ├── Makefile
+        ├── Sample_tests
+        ├── include
+        │   ├── inc
+        │   │   └── sample.h★
+        │   └── util
+        │       └── SampleBuildTime.h
+        ├── lib
+        │   └── libSample.a
+        ├── objs
+        ├── src
+        │   ├── sample.c★
+        │   └── util
+        │       └── SampleBuildTime.cpp
+        └── tests
+            ├── AllTests.cpp
+            ├── TestSample.cpp★
+            └── util
+                └── SampleBuildTimeTest.cpp
+        </pre>
+
+## リモートへプッシュするときの注意点
+* パスワードではなくアクセストークンなるものを入れる必要あり。
+  ユーザ名は従来通り(mitswhisper)。パスワードの代わりに以下を入れる。
+    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
+* 参考になったURL
+    * https://note.kiriukun.com/entry/20210904-github-password-authentication-was-removed
