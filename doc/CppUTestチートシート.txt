@@ -1,0 +1,74 @@
+■CppUTestチートシート
+======================
+* 2021.09.20: 新規作成
+
+## アサーションマクロ
+* 定義ヘッダ
+    * C:\Program Files (x86)\CppUTest\include\CppUTest\UtestMacros.h
+* _TEXTの付いているマクロは付加的なメッセージtextを伴うもの。
+
+## テストの一時的無視
+* TEST() マクロを IGNORE_TEST() にしておくと無視してくれる。
+
+## 常時失敗
+* 両者は同じもの。
+* FAIL(text)
+* FAIL_TEST(text)
+
+## 単純チェック系
+* CHECK(condition)
+* CHECK_TEXT(condition, text)
+* CHECK_TRUE(condition)
+* CHECK_TRUE_TEXT(condition, text)
+* CHECK_FALSE(condition)
+* CHECK_FALSE_TEXT(condition, text)
+* CHECK_EQUAL(expected, actual)
+* CHECK_EQUAL_TEXT(expected, actual, text)
+
+## 文字列比較
+* STRCMP_EQUAL(expected, actual)
+* STRCMP_EQUAL_TEXT(expected, actual, text)
+* STRNCMP_EQUAL(expected, actual, length)
+* STRNCMP_EQUAL_TEXT(expected, actual, length, text)
+* STRCMP_NOCASE_EQUAL(expected, actual)
+* STRCMP_NOCASE_EQUAL_TEXT(expected, actual, text)
+* STRCMP_CONTAINS(expected, actual)
+* STRCMP_CONTAINS_TEXT(expected, actual, text)
+* STRCMP_NOCASE_CONTAINS(expected, actual)
+* STRCMP_NOCASE_CONTAINS_TEXT(expected, actual, text)
+
+## 数値比較系(long)
+* LONGS_EQUAL(expected, actual)
+* LONGS_EQUAL_TEXT(expected, actual, text)
+* UNSIGNED_LONGS_EQUAL(expected, actual)
+* UNSIGNED_LONGS_EQUAL_TEXT(expected, actual, text)
+* LONGLONGS_EQUAL(expected, actual)
+* LONGLONGS_EQUAL_TEXT(expected, actual, text)
+* UNSIGNED_LONGLONGS_EQUAL(expected, actual)
+* UNSIGNED_LONGLONGS_EQUAL_TEXT(expected, actual, text)
+
+## 数値比較系(8ビット値)
+* 下位8ビットのみが比較対象となる。
+* BYTES_EQUAL(expected, actual)
+* BYTES_EQUAL_TEXT(expected, actual, text)
+* SIGNED_BYTES_EQUAL(expected, actual)
+* SIGNED_BYTES_EQUAL_TEXT(expected, actual, text)
+
+## ポインタ系
+* POINTERS_EQUAL(expected, actual)
+* POINTERS_EQUAL_TEXT(expected, actual, text)
+* FUNCTIONPOINTERS_EQUAL(expected, actual)
+* FUNCTIONPOINTERS_EQUAL_TEXT(expected, actual, text)
+
+## メモリ比較
+* MEMCMP_EQUAL(expected, actual, size)
+* MEMCMP_EQUAL_TEXT(expected, actual, size, text)
+
+## ビット単位比較
+* BITS_EQUAL(expected, actual, mask)
+* BITS_EQUAL_TEXT(expected, actual, mask, text)
+
+## 数値比較系(doubule)
+* DOUBLES_EQUAL(expected, actual, threshold)
+* DOUBLES_EQUAL_TEXT(expected, actual, threshold, text)
+

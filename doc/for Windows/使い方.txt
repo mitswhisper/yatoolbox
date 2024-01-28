@@ -1,0 +1,41 @@
+■使い方
+========
+* 2021.09.19: 新規作成
+
+Cpputestの環境はインストール済みとしてます。
+同梱のsampleフォルダをお好みの場所にコピーして、フォルダ名もお好みの名前に変えて
+下さい。
+その後、当該フォルダ内で「make」を実行し、以下の出力が成されればOKです。
+後は、自分好みの形にすれば良いです。
+```
+Microsoft Windows [Version 10.0.18363.1556]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\hirom\Documents\sample> make
+# Create hello.d
+gcc -Wall -std=c99 -o hello.o -c hello.c
+g++ -Wall -I"C:\Program Files (x86)\CppUTest/include" -o testMain.o -c testMain.cpp
+g++ -Wall -I"C:\Program Files (x86)\CppUTest/include" -o testDriver.o -c testDriver.cpp
+g++ -o utest.exe hello.o testMain.o testDriver.o -L"C:\Program Files (x86)\CppUTest/lib" -lCppUTest -lCppUTestExt
+# Execute Unit Test
+./utest.exe
+.
+OK (1 tests, 1 ran, 1 checks, 0 ignored, 0 filtered out, 0 ms)
+
+
+C:\Users\hirom\Documents\sample>
+```
+
+ちなみに生成された「utest.exe」が単体テストドライバで、単独で実行できます。
+```
+C:\Users\hirom\Documents\sample> utest
+.
+OK (1 tests, 1 ran, 1 checks, 0 ignored, 0 filtered out, 0 ms)
+
+
+C:\Users\hirom\Documents\sample>
+```
+
+オブジェクトを全部消去したい場合は`make clean`です。
+
+以上

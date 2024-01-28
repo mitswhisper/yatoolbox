@@ -1,0 +1,10 @@
+■インストールメモ
+=========================
+* 2021.08.12: 新規作成
+
+cpputestを導入したときのメモ。
+
+## URL集
+* https://cpputest.github.io/index.html ==> 本家
+* https://yukblog.net/cpputest-mingw-install ==> インストール時に参考になった。
+
